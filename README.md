@@ -189,4 +189,6 @@
 - Description: Delete a user from the library system by their ID.
 - Response: Success message.
 
+## ER DIAGRAM
 
+![ER Diagram](./ER-diagram.png)
