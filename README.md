@@ -91,57 +91,102 @@
 - The system complies with accessibility standards to ensure usability for users with disabilities, including screen reader compatibility and keyboard navigation.
 - Data security measures such as encryption, secure login, role-based access control, and regular data backups are implemented to protect user information and library data.
 
-# University Library REST API
+# REST API for University Library Management
 
-## Authentication
-- **POST /api/auth/login:** Login with username and password.
-- **POST /api/auth/logout:** Logout the currently logged-in user.
-- **POST /api/auth/register:** Register a new user with username, email, and password.
+## Books Endpoint
 
-## Books
-- **GET /api/books:** Retrieve a list of all books.
-- **GET /api/books/{id}:** Get details of a specific book by ID.
-- **POST /api/books:** Add a new book to the library.
-- **PUT /api/books/{id}:** Update information for a specific book by ID.
-- **DELETE /api/books/{id}:** Delete a book from the library by ID.
+### GET /books
+- Description: Get a list of all books in the library.
+- Response: JSON array of book objects.
 
-## Authors
-- **GET /api/authors:** Get a list of all authors.
-- **GET /api/authors/{id}:** Get details of a specific author by ID.
-- **POST /api/authors:** Add a new author to the system.
-- **PUT /api/authors/{id}:** Update information for a specific author by ID.
-- **DELETE /api/authors/{id}:** Remove an author from the system by ID.
+### GET /books/{book_id}
+- Description: Get details of a specific book by its ID.
+- Response: JSON object with book details.
 
-## Users
-- **GET /api/users:** Retrieve a list of all users (admin access).
-- **GET /api/users/{id}:** Get details of a specific user by ID (admin access).
-- **PUT /api/users/{id}:** Update user information by ID (admin access).
-- **DELETE /api/users/{id}:** Delete a user from the system by ID (admin access).
+### POST /books
+- Description: Add a new book to the library.
+- Request Body: JSON object with book details (title, ISBN, publisher, year_published).
+- Response: Success message with the ID of the newly added book.
 
-## Loans
-- **GET /api/loans:** Retrieve a list of all active loans.
-- **GET /api/loans/{id}:** Get details of a specific loan by ID.
-- **POST /api/loans:** Create a new loan for a user.
-- **PUT /api/loans/{id}:** Update loan information (e.g., return date) by ID.
-- **DELETE /api/loans/{id}:** Cancel a loan by ID.
+### PUT /books/{book_id}
+- Description: Update details of a specific book.
+- Request Body: JSON object with updated book details.
+- Response: Success message.
 
-## Departments
-- **GET /api/departments:** Get a list of all departments.
-- **GET /api/departments/{id}:** Get details of a specific department by ID.
-- **POST /api/departments:** Add a new department to the library.
-- **PUT /api/departments/{id}:** Update department information by ID.
-- **DELETE /api/departments/{id}:** Remove a department from the system by ID.
+### DELETE /books/{book_id}
+- Description: Delete a book from the library by its ID.
+- Response: Success message.
 
-## Notifications
-- **GET /api/notifications:** Get a list of notifications for the current user.
-- **POST /api/notifications:** Send a new notification to a user.
+## Authors Endpoint
 
-## Reports
-- **GET /api/reports/loans:** Generate a report of all book loans.
-- **GET /api/reports/overdue:** Generate a report of overdue books.
-- **GET /api/reports/popular-books:** Get a list of popular books based on loan history.
+### GET /authors
+- Description: Get a list of all authors in the library.
+- Response: JSON array of author objects.
 
-## Analytics
-- **GET /api/analytics/usage:** Get usage analytics for the library system.
-- **GET /api/analytics/traffic:** Get traffic analytics for the library website.
+### GET /authors/{author_id}
+- Description: Get details of a specific author by their ID.
+- Response: JSON object with author details.
+
+### POST /authors
+- Description: Add a new author to the library.
+- Request Body: JSON object with author details (name, nationality, birthdate).
+- Response: Success message with the ID of the newly added author.
+
+### PUT /authors/{author_id}
+- Description: Update details of a specific author.
+- Request Body: JSON object with updated author details.
+- Response: Success message.
+
+### DELETE /authors/{author_id}
+- Description: Delete an author from the library by their ID.
+- Response: Success message.
+
+## Loans Endpoint
+
+### GET /loans
+- Description: Get a list of all active loans in the library.
+- Response: JSON array of loan objects.
+
+### GET /loans/{loan_id}
+- Description: Get details of a specific loan by its ID.
+- Response: JSON object with loan details.
+
+### POST /loans
+- Description: Create a new loan for a book.
+- Request Body: JSON object with loan details (book_id, borrower_id, loan_date, return_date).
+- Response: Success message with the ID of the newly created loan.
+
+### PUT /loans/{loan_id}
+- Description: Update details of a specific loan.
+- Request Body: JSON object with updated loan details.
+- Response: Success message.
+
+### DELETE /loans/{loan_id}
+- Description: Delete a loan from the library by its ID.
+- Response: Success message.
+
+## Users (Students/Staff) Endpoint
+
+### GET /users
+- Description: Get a list of all users (students/staff) in the library system.
+- Response: JSON array of user objects.
+
+### GET /users/{user_id}
+- Description: Get details of a specific user by their ID.
+- Response: JSON object with user details.
+
+### POST /users
+- Description: Register a new user (student or staff).
+- Request Body: JSON object with user details (name, email, address, department, role).
+- Response: Success message with the ID of the newly registered user.
+
+### PUT /users/{user_id}
+- Description: Update details of a specific user.
+- Request Body: JSON object with updated user details.
+- Response: Success message.
+
+### DELETE /users/{user_id}
+- Description: Delete a user from the library system by their ID.
+- Response: Success message.
+
 
