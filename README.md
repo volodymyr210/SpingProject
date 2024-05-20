@@ -191,4 +191,4 @@
 
 ## ER DIAGRAM
 
-![ER Diagram](./ER-diagrm.png)
+![ER Diagram](./ER-diagram.png)
